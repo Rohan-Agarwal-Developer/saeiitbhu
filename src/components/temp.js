@@ -1,0 +1,2 @@
+“All those cars were once just a dream in somebody’s head.”
+SAE Collegiate club is a platform where students sharing a vehement passion for automobile sciences involve themselves in various projects. It is a platform for students to complement the theoretical knowledge imparted in the classroom, with emphasis on the practical aspects of engineering. We work together as a strong team not only on amassing knowledge but also gaining experience in the technical field of design and manufacturing.
