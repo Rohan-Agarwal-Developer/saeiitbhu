@@ -40,7 +40,7 @@ function CardEntry(item) {
 
     return (
         <div className="col-lg-4 project-box col-sm-12" >
-            <div className="project-card" onMouseEnter={ChangeStateOver} onMouseLeave={ChangeStateAway}>
+            <div className={"project-card" + (onHover ? "-animated" : "")}  onMouseEnter={ChangeStateOver} onMouseLeave={ChangeStateAway}>
                 <div className={"project-card-elements " + "project-card-elements-" + item.num} style={{ display: (!onHover ? "block" : "none") }} >
                     <img className="project-images" src={item.img} alt={item.name} />
                     <h3>{item.name}</h3>
@@ -48,8 +48,9 @@ function CardEntry(item) {
                 <div className={"project-card-elements " + "project-card-elements-" + item.num}
                     style={{ display: (!onHover ? "none" : "block"), ...animate }}>
                     <div style={{ padding: "5%", fontWeight: "600" }}>
+                        <img className="project-images-animated" src={item.img} alt={item.name} />
                         <h3>{item.name}</h3>
-                        <p style={{fontSize: "0.8rem"}}>{item.description.slice(0, 300)}........</p>
+                        <p style={{ fontSize: "0.9rem" }}>{item.description.slice(0, 300)}........</p>
                         <button type="button" class="btn btn-dark btn-sm">Know more</button>
                     </div>
                 </div>
@@ -58,158 +59,6 @@ function CardEntry(item) {
     );
 
 }
-
-// bouceOut
-
-// bounce
-
-// bounceIn
-
-// bounceInDown
-
-// bounceInLeft
-
-// bounceInRight
-
-// bounceInUp
-
-// bounceOutDown
-
-// bounceOutLeft
-
-// bounceOutRight
-
-// bounceOutUp
-
-// fadeIn
-
-// fadeInDown
-
-// fadeInDownBig
-
-// fadeInLeft
-
-// fadeInLeftBig
-
-// fadeInRight
-
-// fadeInRightBig
-
-// fadeInUp
-
-// fadeInUpBig
-
-// fadeOut
-
-// fadeOutDown
-
-// fadeOutDownBig
-
-// fadeOutLeft
-
-// fadeOutLeftBig
-
-// fadeOutRight
-
-// fadeOutRightBig
-
-// fadeOutUp
-
-// fadeOutUpBig
-
-// flash
-
-// flip
-
-// flipInX
-
-// flipInY
-
-// flipOutX
-
-// flipOutY
-
-// headShake
-
-// hinge
-
-// jello
-
-// lightSpeedIn
-
-// lightSpeedOut
-
-// pulse
-
-// rollIn
-
-// rollOut
-
-// rotateIn
-
-// rotateInDownLeft
-
-// rotateInDownRight
-
-// rotateInUpLeft
-
-// rotateInUpRight
-
-// rotateOut
-
-// rotateOutDownLeft
-
-// rotateOutDownRight
-
-// rotateOutUpLeft
-
-// rotateOutUpRight
-
-// rubberBand
-
-// shake
-
-// slideInDown
-
-// slideInLeft
-
-// slideInRight
-
-// slideInUp
-
-// slideOutDown
-
-// slideOutLeft
-
-// slideOutRight
-
-// slideOutUp
-
-// swing
-
-// tada
-
-// wobble
-
-// zoomIn
-
-// zoomInDown
-
-// zoomInLeft
-
-// zoomInRight
-
-// zoomInUp
-
-// zoomOut
-
-// zoomOutDown
-
-// zoomOutLeft
-
-// zoomOutRight
-
-// zoomOutUp
 
 function Projects() {
 

@@ -1,5 +1,9 @@
 import React from "react";
 import logo from "../images/saelogohd2.png";
+import EventNoteIcon from '@material-ui/icons/EventNote';
+import GroupIcon from '@material-ui/icons/Group';
+import AccountTreeIcon from '@material-ui/icons/AccountTree';
+import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
 
 const notifications = [
     {
@@ -23,8 +27,9 @@ const notifications = [
 function NotificationItem(props) {
     return (
         <div className="notification-item">
-        <a className="dropdown-item" href="#">{props.date} | {props.description}</a>
-        <hr className="notification-separator"/>
+            <a className="dropdown-item" href="#"><EventNoteIcon /> {props.date} | 
+                <div style={{fontWeight:"600"}}>{props.description}</div> </a>
+            <hr className="notification-separator" />
         </div>
     )
 }
@@ -66,15 +71,16 @@ function Navbar() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ml-auto nav-pills">
+                        <li className="nav-item">
+                            <a className="nav-link" href="#projects">Projects <AccountTreeIcon style={{ fontSize: "18" }} /></a>
+                        </li>
 
                         <li className="nav-item">
-                            <a className="nav-link" href="#events">Events</a>
+                            <a className="nav-link" href="#events">Events <EmojiEventsIcon style={{ fontSize: "19" }} /></a>
                         </li>
+
                         <li className="nav-item">
-                            <a className="nav-link" href="#projects">Projects</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#footer">Contact Us</a>
+                            <a className="nav-link" href="#footer">Contact <GroupIcon style={{ fontSize: "20" }} /></a>
                         </li>
                         <li className="nav-item dropdown">
                             <Notifications />
