@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import { Button } from '@material-ui/core';
+import { useMediaQuery } from 'react-responsive';
 //import CardEntry from "./CardEntry";
 
-import aquadrive from "../images/aquadrive.jpg";
+import aquadrive from "../images/aquadrivelow.jpg";
 import axelerate from "../images/Axelerate.jpg";
 import designing from "../images/design.jpg";
 import workshop from "../images/screws.png";
 import quiz from "../images/quiz.png";
 import outfest from "../images/rc2.jpg"
+
 
 const events = [
     {
@@ -52,6 +55,61 @@ const events = [
 
 ];
 
+function CardEntryOnMobile(item) {
+
+    const [variable, SetVariable] = useState(false);
+
+    function ChangeStateOver() {
+        SetVariable(true);
+    }
+    function ChangeStateAway() {
+        SetVariable(false);
+    }
+
+    const animate = {
+        animationName: "fadeInUp",
+        animationDuration: "0.5s"
+    }
+    // style={animate}
+    return (
+        <div className="card-custom">
+            <div className="event-card-mobile">
+                <div className="event-card-elements-box">
+                    {!variable &&
+                        <div className={"event-card-elements"} style={animate}>
+                            {/*  */}
+                            <div >
+                                <img className="event-images" src={item.img} alt={item.name} />
+                                <h3>{item.name}</h3>
+                                
+                                <Button onClick={ChangeStateOver} variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Description</Button>
+                            </div>
+                        </div>
+                    }
+                    {variable &&
+                        <div className={"event-card-elements-secondary"} style={animate}>
+                            {/* event-card-elements-secondary */}
+                            <div>
+                                <img className="event-images" style={{ height: "50px", width: "50px" }} src={item.img} alt={item.name} />
+                                <h3>{item.name}</h3>
+                                <p style={{ whiteSpace: "pre-line" }}>{item.description.slice(0, 200) + "............"}</p>
+                                <Button variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Know more</Button>
+                                <Button onClick={ChangeStateAway} variant="outlined" style={{ backgroundColor: "white", color: "black", size:"small" }}>Back</Button>
+                                
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+
+    );
+}
+
+
+
 function CardEntry(item) {
     //console.log(item.style);
     const [onHover, setHover] = useState(false);
@@ -69,14 +127,13 @@ function CardEntry(item) {
     }
 
     return (
-        <div className="col-lg-3 event-box col-sm-12" >
+        <div className="col-lg-3 col-6 event-box" >
             <div className="event-card" onMouseEnter={ChangeStateOver} onMouseLeave={ChangeStateAway}>
-                <div className={"event-card-elements " + "event-card-elements-" + item.num} style={{ display: (!onHover ? "block" : "none") }} >
+                <div className={"event-card-elements"} style={{ display: (!onHover ? "block" : "none") }} >
                     <img className="event-images" src={item.img} alt={item.name} />
                     <h3>{item.name}</h3>
                 </div>
-                <div className={"event-card-elements " + "event-card-elements-" + item.num}
-                    style={{ display: (!onHover ? "none" : "block"), ...animate }}>
+                <div className={"event-card-elements"} style={{ display: (!onHover ? "none" : "block"), ...animate }}>
                     <div style={{ padding: "5%", fontWeight: "600" }}>
                         <h3>{item.name}</h3>
                         <p style={{ fontSize: "0.8rem" }}>{item.description.slice(0, 320)}........</p>
@@ -89,21 +146,44 @@ function CardEntry(item) {
 }
 
 function Events() {
-    return (
-        <section id="events">
-            <h2>EVENTS</h2>
-            <div className="row">
-                {events.map(props =>
-                    <CardEntry
-                        key={props.id}
-                        img={props.img}
-                        name={props.name}
-                        description={props.description}
-                    />
-                )}
-            </div>
-        </section>
-    );
+    const isMobile = useMediaQuery({
+        query: '(max-device-width: 768px)'
+    });
+
+    if (!isMobile) {
+        return (
+            <section id="events" className="">
+                <h2>EVENTS</h2>
+                <div className="row">
+                    {events.map(props =>
+                        <CardEntry
+                            key={props.id}
+                            img={props.img}
+                            name={props.name}
+                            description={props.description}
+                        />
+                    )}
+                </div>
+            </section>
+        );
+    } else {
+        return (
+            <section id="events">
+                <h2>EVENTS</h2>
+                <div className="row row-custom">
+                    {events.map(props =>
+                        <CardEntryOnMobile
+                            key={props.id}
+                            img={props.img}
+                            name={props.name}
+                            description={props.description}
+                        />
+                    )}
+                </div>
+            </section>
+        );
+
+    }
 }
 
 export default Events;

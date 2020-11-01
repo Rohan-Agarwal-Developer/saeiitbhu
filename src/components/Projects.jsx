@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Button } from '@material-ui/core';
+import { useMediaQuery } from 'react-responsive';
 
 const projects = [
     {
@@ -40,7 +42,7 @@ function CardEntry(item) {
 
     return (
         <div className="col-lg-4 project-box col-sm-12" >
-            <div className={"project-card" + (onHover ? "-animated" : "")}  onMouseEnter={ChangeStateOver} onMouseLeave={ChangeStateAway}>
+            <div className={"project-card" + (onHover ? "-animated" : "")} onMouseEnter={ChangeStateOver} onMouseLeave={ChangeStateAway}>
                 <div className={"project-card-elements " + "project-card-elements-" + item.num} style={{ display: (!onHover ? "block" : "none") }} >
                     <img className="project-images" src={item.img} alt={item.name} />
                     <h3>{item.name}</h3>
@@ -60,14 +62,87 @@ function CardEntry(item) {
 
 }
 
-function Projects() {
+function CardEntryOnMobile(item) {
 
-    var toReturn = (
+    const [variable, SetVariable] = useState(false);
+
+    function ChangeStateOver() {
+        SetVariable(true);
+    }
+    function ChangeStateAway() {
+        SetVariable(false);
+    }
+
+    const animate = {
+        animationName: "fadeInUp",
+        animationDuration: "0.5s"
+    }
+    // style={animate}
+    return (
+        <div className="card-custom">
+            <div className="event-card-mobile">
+                <div className="event-card-elements-box">
+                    {!variable &&
+                        <div className={"event-card-elements"} style={animate}>
+                            {/*  */}
+                            <div >
+                                <img className="event-images" src={item.img} alt={item.name} />
+                                <h3>{item.name}</h3>
+                                
+                                <Button onClick={ChangeStateOver} variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Description</Button>
+                            </div>
+                        </div>
+                    }
+                    {variable &&
+                        <div className={"event-card-elements-secondary"} style={animate}>
+                            {/* event-card-elements-secondary */}
+                            <div>
+                                <img className="event-images" style={{ height: "50px", width: "50px" }} src={item.img} alt={item.name} />
+                                <h3>{item.name}</h3>
+                                <p style={{ whiteSpace: "pre-line" }}>{item.description.slice(0, 200) + "............"}</p>
+                                <Button variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Know more</Button>
+                                <Button onClick={ChangeStateAway} variant="outlined" style={{ backgroundColor: "white", color: "black", size:"small" }}>Back</Button>
+                                
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+
+    );
+}
+
+function Projects() {
+    const isMobile = useMediaQuery({
+        query: '(max-device-width: 768px)'
+    });
+    if (!isMobile) {
+        return (
+            <section id="projects">
+                <h2>ONGOING PROJECTS</h2>
+                <div className="row">
+                    {projects.map(props =>
+                        <CardEntry
+                            key={props.id}
+                            img={props.img}
+                            name={props.name}
+                            description={props.description}
+                            num={props.id}
+                        />
+                    )}
+                </div>
+            </section>
+        );
+    } else {
+        return (
         <section id="projects">
-            <h2>ONGOING PROJECTS</h2>
-            <div className="row">
+            <h2>PROJECTS</h2>
+            <div className="row row-custom">
                 {projects.map(props =>
-                    <CardEntry
+                    <CardEntryOnMobile
                         key={props.id}
                         img={props.img}
                         name={props.name}
@@ -77,9 +152,10 @@ function Projects() {
                 )}
             </div>
         </section>
-    );
+        );
+    }
 
-    return toReturn;
+
 }
 
 export default Projects;

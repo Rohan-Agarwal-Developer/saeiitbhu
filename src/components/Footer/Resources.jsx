@@ -46,7 +46,7 @@ const resources = [
 function ResourceEntry(item) {
     return (
         //<h1>Rohan</h1>
-        <div className="col-lg-3"><a href={item.link}>{item.name}</a></div>
+        <div className="col-lg-3 col-6"><a href={item.link}>{item.name}</a></div>
     );
 }
 
@@ -54,7 +54,7 @@ function ResourceEntry(item) {
 function Resources() {
     return (
         <div>
-            <h5 style={{textAlign: "center"}}>Resources & Important Links</h5>
+            <h5>Resources & Important Links</h5>
             <div className="row footer-box-resources">
                 {resources.map(props =>
                     <ResourceEntry

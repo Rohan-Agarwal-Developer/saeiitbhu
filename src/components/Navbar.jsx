@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../images/saelogohd2.png";
 import EventNoteIcon from '@material-ui/icons/EventNote';
 import GroupIcon from '@material-ui/icons/Group';
 import AccountTreeIcon from '@material-ui/icons/AccountTree';
 import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
+import HomeIcon from '@material-ui/icons/Home';
+import { Link } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive';
+import ListIcon from '@material-ui/icons/List';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+
+// const isMobile = useMediaQuery({
+//     query: '(max-device-width: 768px)'
+// });
+
 
 const notifications = [
     {
@@ -25,24 +35,45 @@ const notifications = [
 ]
 
 function NotificationItem(props) {
-    return (
-        <div className="notification-item">
-            <a className="dropdown-item" href="#"><EventNoteIcon /> {props.date} | 
-                <div style={{fontWeight:"600"}}>{props.description}</div> </a>
-            <hr className="notification-separator" />
-        </div>
-    )
+    const isMobile = useMediaQuery({
+        query: '(max-device-width: 768px)'
+    });
+    if (isMobile) {
+        return (
+            <div className="notification-item">
+                <a href="">
+                    <p style={{ fontWeight: "600" }}><EventNoteIcon /> {props.date} | {props.description}</p>
+                </a>
+                <hr className="notification-separator" />
+            </div>
+        );
+    } else {
+        return (
+            <div className="notification-item">
+                <a className={"dropdown-item"} href="">
+                    <p style={{ fontWeight: "600" }}><EventNoteIcon /> {props.date} |</p>
+                    <p style={{ fontWeight: "500" }}>{props.description}</p>
+                </a>
+                <hr className="notification-separator" />
+            </div>
+        );
+
+    }
 }
 
 
 function Notifications() {
+    const isMobile = useMediaQuery({
+        query: '(max-device-width: 768px)'
+    });
     return (
         <div className="dropdown ">
-            <button className="btn btn-secondary dropdown-toggle .navbar-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Notifications
+            <button className="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ border: "1px solid white" }}>
+                {isMobile ? <NotificationsIcon style={{ fontSize: "1rem" }} /> : "Notifications"}
             </button>
-            <div className="dropdown-menu dropdown-style dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                <div className="">
+            <div className="dropdown-container" >
+                <div className="dropdown-menu dropdown-style dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+
                     {notifications.map(props =>
                         <NotificationItem
                             key={props.id}
@@ -59,56 +90,53 @@ function Notifications() {
 
 
 function Navbar() {
+
+    const isMobile = useMediaQuery({
+        query: '(max-device-width: 768px)'
+    });
     return (
         <div className="header-navigator">
             <nav className="navbar navbar-expand-lg navbar-primary pad-mgn fixed-top">
                 <img className="saelogo" src={logo} alt="saelogo" />
                 <a className="navbar-brand" href="">
-                    <h6>Society of Automotive Engineers - IIT BHU Varanasi</h6>
+                    <h6>{isMobile ? "SAE IIT BHU" : "Society of Automotive Engineers - IIT BHU Varanasi"}</h6>
                 </a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
+                {isMobile && <div className="nav-item dropdown">
+                    <Notifications />
+                </div>}
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style={{ border: "1px white solid" }}>
+                    {/* <span className="navbar-toggler-icon"></span> */}
+                    <ListIcon style={{ color: "white" }} />
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ml-auto nav-pills">
+
                         <li className="nav-item">
-                            <a className="nav-link" href="#projects">Projects <AccountTreeIcon style={{ fontSize: "18" }} /></a>
+                            <Link className="nav-link" to="/">Home <HomeIcon style={{ fontSize: "18" }} /></Link>
                         </li>
 
                         <li className="nav-item">
-                            <a className="nav-link" href="#events">Events <EmojiEventsIcon style={{ fontSize: "19" }} /></a>
+                            <Link className="nav-link" to="/projects">Projects <AccountTreeIcon style={{ fontSize: "18" }} /></Link>
+                        </li>
+
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/events">Events <EmojiEventsIcon style={{ fontSize: "19" }} /></Link>
                         </li>
 
                         <li className="nav-item">
                             <a className="nav-link" href="#footer">Contact <GroupIcon style={{ fontSize: "20" }} /></a>
                         </li>
-                        <li className="nav-item dropdown">
+                        {!isMobile && <li className="nav-item dropdown">
                             <Notifications />
-                        </li>
+                        </li>}
 
                     </ul>
                 </div>
+
             </nav>
         </div>
     );
 }
-
-{/* <nav className="navbar navbar-inverse navbar-dark bg-dark">
-    <div className="container-fluid">
-        <div className="navbar-header">
-            <a className="navbar-brand" href="#">WebSiteName</a>
-        </div>
-        <ul className="nav navbar-nav">
-            <li className="active"><a href="#">Home</a></li>
-            <li><a href="#">Page 1</a></li>
-            <li><a href="#">Page 2</a></li>
-        </ul>
-        <ul className="nav navbar-nav navbar-right">
-            <li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
-    </div>
-</nav> */}
 
 export default Navbar;
 

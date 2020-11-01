@@ -29,43 +29,14 @@ export default function () {
             <div className="title-description">
                 <h1>Welcome to SAE's official website</h1>
                 <div className="row">
-                    <div className="col-lg-6 col-sm-12 title-left">
+                    <div className="col-lg-6 col-sm-12">
                         <About />
                     </div>
-                    <div className="col-lg-6 title-left">
+                    <div className="col-lg-6 col-sm-12">
                         <Pictures />
                     </div>
                 </div>
             </div>
-            {/* <Sntc /> */}
         </section>
     )
 }
-// style="text-align: center; font-size: 1rem;"
-
-
-
-    //  <div className="row">
-    //           <div className="col-lg-4 title-left">
-    //             <div className="about-us title-sections">
-    //               <h4>About Us</h4>
-    //               <hr />
-    //               <p className="title-description-text">We are a community at IIT BHU that focusses on Automotive engineering and its applications</p>
-    //             </div>
-    //             <div className="featured title-sections">
-    //               <h4>Featured</h4>
-    //               <hr />
-    //               <ul>
-    //                 <li className="title-description-text">SAE announces it's new secretaries for the academic year 2020-21</li>
-    //                 <li className="title-description-text">SAE to represent IIT BHU in upcoming BAJA competition</li>
-    //                 <li className="title-description-text">The core team of SAE successfully compltetes the electric RC Car project</li>
-    //                 <li className="title-description-text">The club organised online workshops for 2nd yearites in the COVID scenario</li>
-    //                 <li className="title-description-text">Keep yourself healthy and safe - SAE's best wishes with you</li>
-    //               </ul>
-    //             </div>
-    //           </div>
-    //           {/* <div className="col-lg-8 col-md-4 title-right">
-    //             <img src="images/rc3.jpg" className="rc1" alt="iphone-mockup" />
-    //           </div> */}
-    //         </div>
-    
