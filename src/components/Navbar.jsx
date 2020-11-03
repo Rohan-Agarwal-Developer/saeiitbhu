@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 import ListIcon from '@material-ui/icons/List';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import Searchbar from "./Searchbar";
+import SearchIcon from '@material-ui/icons/Search';
 
 // const isMobile = useMediaQuery({
 //     query: '(max-device-width: 768px)'
@@ -94,26 +96,46 @@ function Navbar() {
     const isMobile = useMediaQuery({
         query: '(max-device-width: 768px)'
     });
+    const [searchEnabled, SearchEnableToggle] = useState(false);
+
+    function SearchToggle() {
+        if (searchEnabled === true) {
+            SearchEnableToggle(false);
+        } else {
+            SearchEnableToggle(true);
+        }
+    }
+
     return (
         <div className="header-navigator">
             <nav className="navbar navbar-expand-lg navbar-primary pad-mgn fixed-top">
-                <img className="saelogo" src={logo} alt="saelogo" />
-                <a className="navbar-brand" href="">
-                    <h6>{isMobile ? "SAE IIT BHU" : "Society of Automotive Engineers - IIT BHU Varanasi"}</h6>
-                </a>
+                
+                    <div >
+                        <img className="saelogo" src={logo} alt="saelogo" />
+                        <a className="navbar-brand" href="" >
+                            <h6 >{isMobile ? "SAE IIT BHU" : "Society of Automotive Engineers - IIT BHU Varanasi"}</h6>
+                        </a>
+                    </div>
+                
                 {isMobile && <div className="nav-item dropdown">
                     <Notifications />
                 </div>}
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style={{ border: "1px white solid" }}>
-                    {/* <span className="navbar-toggler-icon"></span> */}
                     <ListIcon style={{ color: "white" }} />
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ml-auto nav-pills">
+                        {!isMobile && <li>
+                            <Searchbar />
+                        </li>}
 
                         <li className="nav-item">
                             <Link className="nav-link" to="/">Home <HomeIcon style={{ fontSize: "18" }} /></Link>
                         </li>
+
+                        {isMobile && <li>
+                            <Link className="nav-link" onClick={SearchToggle}>Search <SearchIcon style={{ fontSize: "18" }} /></Link>
+                        </li>}
 
                         <li className="nav-item">
                             <Link className="nav-link" to="/projects">Projects <AccountTreeIcon style={{ fontSize: "18" }} /></Link>
@@ -129,6 +151,7 @@ function Navbar() {
                         {!isMobile && <li className="nav-item dropdown">
                             <Notifications />
                         </li>}
+
 
                     </ul>
                 </div>

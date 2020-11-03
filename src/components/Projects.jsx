@@ -88,7 +88,7 @@ function CardEntryOnMobile(item) {
                             <div >
                                 <img className="event-images" src={item.img} alt={item.name} />
                                 <h3>{item.name}</h3>
-                                
+
                                 <Button onClick={ChangeStateOver} variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Description</Button>
                             </div>
                         </div>
@@ -101,13 +101,11 @@ function CardEntryOnMobile(item) {
                                 <h3>{item.name}</h3>
                                 <p style={{ whiteSpace: "pre-line" }}>{item.description.slice(0, 200) + "............"}</p>
                                 <Button variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Know more</Button>
-                                <Button onClick={ChangeStateAway} variant="outlined" style={{ backgroundColor: "white", color: "black", size:"small" }}>Back</Button>
-                                
+                                <Button onClick={ChangeStateAway} variant="outlined" style={{ backgroundColor: "white", color: "black", size: "small" }}>Back</Button>
+
                             </div>
                         </div>
                     }
-
-
                 </div>
             </div>
         </div>
@@ -138,20 +136,20 @@ function Projects() {
         );
     } else {
         return (
-        <section id="projects">
-            <h2>PROJECTS</h2>
-            <div className="row row-custom">
-                {projects.map(props =>
-                    <CardEntryOnMobile
-                        key={props.id}
-                        img={props.img}
-                        name={props.name}
-                        description={props.description}
-                        num={props.id}
-                    />
-                )}
-            </div>
-        </section>
+            <section id="projects">
+                <h2>PROJECTS</h2>
+                <div className="row row-custom">
+                    {projects.map(props =>
+                        <CardEntryOnMobile
+                            key={props.id}
+                            img={props.img}
+                            name={props.name}
+                            description={props.description}
+                            num={props.id}
+                        />
+                    )}
+                </div>
+            </section>
         );
     }
 
