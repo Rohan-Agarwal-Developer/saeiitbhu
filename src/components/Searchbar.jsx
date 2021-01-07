@@ -13,7 +13,7 @@ export default function () {
                 <form class="form-inline ml-auto">
                     <div class="md-form my-0">
                         <input list="browsers" name="browser" class="form-control" type="text" placeholder="Search" aria-label="Search" style={{ width: "150px", height: "30px" }} />
-                        <button href="#!" class="btn btn-outline-white btn-sm my-0 ml-sm-2" type="submit"><SearchIcon style={{ color: "white" }} /></button>
+                        <button href="#!" className="btn btn-outline-white btn-sm my-0 ml-sm-2" type="submit"><SearchIcon style={{ color: "white" }} /></button>
                         <datalist id="browsers" >
                             <option value="IC Engines" />
                             <option value="Differential" />
@@ -29,7 +29,7 @@ export default function () {
                 <form class="form-inline ml-auto">
                     <span class="md-form my-0">
                         <span>
-                            <input list="browsers" name="browser" class="form-control" type="text" placeholder="Search" aria-label="Search" style={{ width: "150px", height: "30px",float:"left", paddingTop:"2.5%" }} />
+                            <input list="browsers" name="browser" class="form-control" type="text" placeholder="Search" aria-label="Search" style={{ width: "150px", height: "30px", float: "left", paddingTop: "2.5%" }} />
                             <button href="#!" class="btn btn-outline-white btn-sm my-0 ml-sm-2" type="submit" style={{ display: "inline" }}><SearchIcon style={{ color: "white" }} /></button>
                         </span>
                         <datalist id="browsers" >

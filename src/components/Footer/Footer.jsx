@@ -8,7 +8,7 @@ export default function Footer() {
     const year = new Date().getFullYear(); 
     return (
         <footer id="footer">
-            <People />
+            {/* <People /> */}
             <hr />
             <Resources />
             <Social />

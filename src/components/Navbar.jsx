@@ -63,26 +63,27 @@ function NotificationItem(props) {
     }
 }
 
-
 function Notifications() {
     const isMobile = useMediaQuery({
         query: '(max-device-width: 768px)'
     });
     return (
-        <div className="dropdown ">
-            <button className="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ border: "1px solid white" }}>
-                {isMobile ? <NotificationsIcon style={{ fontSize: "1rem" }} /> : "Notifications"}
-            </button>
-            <div className="dropdown-container" >
-                <div className="dropdown-menu dropdown-style dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+        <div >
+            <div className="dropdown " >
+                <button className="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ border: "1px solid white", position: "relative", float: "right" }}>
+                    {isMobile ? <NotificationsIcon style={{ fontSize: "1rem" }} /> : "Notifications"}
+                </button>
+                <div className="dropdown-container" >
+                    <div className="dropdown-menu dropdown-style dropdown-menu-right" aria-labelledby="dropdownMenuButton">
 
-                    {notifications.map(props =>
-                        <NotificationItem
-                            key={props.id}
-                            description={props.description}
-                            date={props.date}
-                        />
-                    )}
+                        {notifications.map(props =>
+                            <NotificationItem
+                                key={props.id}
+                                description={props.description}
+                                date={props.date}
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
@@ -109,14 +110,14 @@ function Navbar() {
     return (
         <div className="header-navigator">
             <nav className="navbar navbar-expand-lg navbar-primary pad-mgn fixed-top">
-                
-                    <div >
-                        <img className="saelogo" src={logo} alt="saelogo" />
-                        <a className="navbar-brand" href="" >
-                            <h6 >{isMobile ? "SAE IIT BHU" : "Society of Automotive Engineers - IIT BHU Varanasi"}</h6>
-                        </a>
-                    </div>
-                
+
+                <div >
+                    <img className="saelogo" src={logo} alt="saelogo" />
+                    <a className="navbar-brand" href="" >
+                        <h6 >{isMobile ? "SAE IIT BHU" : "Society of Automotive Engineers - IIT BHU Varanasi"}</h6>
+                    </a>
+                </div>
+
                 {isMobile && <div className="nav-item dropdown">
                     <Notifications />
                 </div>}
@@ -134,7 +135,7 @@ function Navbar() {
                         </li>
 
                         {isMobile && <li>
-                            <Link className="nav-link" onClick={SearchToggle}>Search <SearchIcon style={{ fontSize: "18" }} /></Link>
+                            <Link className="nav-link" onClick={SearchToggle} to="/">Search <SearchIcon style={{ fontSize: "18" }} /></Link>
                         </li>}
 
                         <li className="nav-item">
