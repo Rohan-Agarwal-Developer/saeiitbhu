@@ -58,6 +58,7 @@ function GalleryEntry(item) {
 
 
 function Gallery() {
+  count = 0;
   return (
     <section id="gallery">
       {/* <h2>GALLERY</h2> */}
