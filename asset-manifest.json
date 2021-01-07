@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/static/js/main.def64ae9.chunk.js",
-    "main.js.map": "/static/js/main.def64ae9.chunk.js.map",
+    "main.js": "/static/js/main.76f4101c.chunk.js",
+    "main.js.map": "/static/js/main.76f4101c.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.38f647cd.js",
     "runtime-main.js.map": "/static/js/runtime-main.38f647cd.js.map",
     "static/js/2.f4cfade8.chunk.js": "/static/js/2.f4cfade8.chunk.js",
     "static/js/2.f4cfade8.chunk.js.map": "/static/js/2.f4cfade8.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.717a2c4c246a0af50daba28db47ec098.js": "/precache-manifest.717a2c4c246a0af50daba28db47ec098.js",
+    "precache-manifest.834ee311df96e7205e7f54d3e244e248.js": "/precache-manifest.834ee311df96e7205e7f54d3e244e248.js",
     "service-worker.js": "/service-worker.js",
     "static/media/Axelerate.jpg": "/static/media/Axelerate.052f0788.jpg",
     "static/media/aquadrivelow.jpg": "/static/media/aquadrivelow.0e872fcb.jpg",
@@ -29,6 +29,6 @@
   "entrypoints": [
     "static/js/runtime-main.38f647cd.js",
     "static/js/2.f4cfade8.chunk.js",
-    "static/js/main.def64ae9.chunk.js"
+    "static/js/main.76f4101c.chunk.js"
   ]
 }
